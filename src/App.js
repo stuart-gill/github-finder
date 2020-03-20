@@ -4,11 +4,13 @@ import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
 import axios from 'axios';
+import Alert from './components/layout/Alert';
 
 class App extends Component {
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   };
 
   // loads the page with first thirty github users...
@@ -31,22 +33,34 @@ class App extends Component {
   };
 
   clearUsers = () => {
-    this.setState({ loading: false, users: [] });
+    this.setState({ loading: false, users: [], alert: null });
+  };
+
+  setAlert = (alertText, styling) => {
+    this.setState({ alert: { alertText, styling } });
+
+    setTimeout(() => this.setState({ alert: null }), 4000);
   };
 
   render() {
+    const { users, loading, alert } = this.state;
+
     return (
-      <nav className="App">
-        <Navbar />
-        <Search
-          searchUsers={this.searchUsers}
-          clearUsers={this.clearUsers}
-          showClearButton={this.state.users.length > 0}
-        />
+      <Fragment>
+        <nav className="App">
+          <Navbar />
+        </nav>
         <div className="container">
-          <Users loading={this.state.loading} users={this.state.users} />
+          <Search
+            searchUsers={this.searchUsers}
+            clearUsers={this.clearUsers}
+            showClearButton={users.length > 0}
+            setAlert={this.setAlert}
+          />
+          <Alert alert={alert} />
+          <Users loading={loading} users={users} />
         </div>
-      </nav>
+      </Fragment>
     );
   }
 }

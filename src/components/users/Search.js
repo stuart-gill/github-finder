@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Profiler } from 'react';
 import PropTypes from 'prop-types';
 
 export class Search extends Component {
@@ -9,7 +9,8 @@ export class Search extends Component {
   static propTypes = {
     searchUsers: PropTypes.func.isRequired,
     clearUsers: PropTypes.func.isRequired,
-    showClearButton: PropTypes.bool.isRequired
+    showClearButton: PropTypes.bool.isRequired,
+    setAlert: PropTypes.func.isRequired
   };
 
   onChange = e => {
@@ -18,11 +19,17 @@ export class Search extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.searchUsers(this.state.searchText);
-    this.setState({ searchText: '' });
+    if (this.state.searchText === '') {
+      this.props.setAlert('please enter search text', 'light');
+    } else {
+      this.props.searchUsers(this.state.searchText);
+      this.setState({ searchText: '' });
+    }
   };
 
   render() {
+    const { clearUsers, showClearButton } = this.props;
+
     return (
       <div>
         <form onSubmit={this.onSubmit} className="form">
@@ -39,10 +46,8 @@ export class Search extends Component {
             className="btn btn-dark btn-block"
           />
         </form>
-        {this.props.showClearButton && (
-          <button
-            className="btn btn-light btn-block"
-            onClick={this.props.clearUsers}>
+        {showClearButton && (
+          <button className="btn btn-light btn-block" onClick={clearUsers}>
             Clear
           </button>
         )}
