@@ -12,11 +12,13 @@ const User = ({ match }) => {
   // have to use empty brackets or it just keeps running
   useEffect(() => {
     getUser(match.params.login);
-    getUserRepos(match.params.login);
+    // getUserRepos(match.params.login);
     // eslint-disable-next-line
   }, []);
 
   const {
+    campsite,
+    duration,
     name,
     company,
     avatar_url,

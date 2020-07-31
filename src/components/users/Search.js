@@ -5,19 +5,25 @@ import AlertContext from '../../context/alert/alertContext';
 const Search = () => {
   const githubContext = useContext(GithubContext);
   const alertContext = useContext(AlertContext);
-  const [text, setText] = useState('');
+  const [zipcode, setZipcode] = useState('');
+  const [willingTravelTime, setWillingTravelTime] = useState('');
 
-  const onChange = (e) => {
-    setText(e.target.value);
+  const onZipChange = (e) => {
+    setZipcode(e.target.value);
+  };
+
+  const onWillingTravelTimeChange = (e) => {
+    setWillingTravelTime(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (text === '') {
-      alertContext.setAlert('please enter search text', 'light');
+    if (zipcode === '') {
+      alertContext.setAlert('please enter search zipcode', 'light');
     } else {
-      githubContext.searchUsers(text);
-      setText('');
+      githubContext.searchUsers(zipcode, willingTravelTime);
+      setZipcode('');
+      setWillingTravelTime('');
     }
   };
 
@@ -26,10 +32,17 @@ const Search = () => {
       <form onSubmit={onSubmit} className="form">
         <input
           type="text"
-          name="text"
-          placeholder="search users"
-          value={text}
-          onChange={onChange}
+          name="zipcode"
+          placeholder="zipcode"
+          value={zipcode}
+          onChange={onZipChange}
+        />
+        <input
+          type="text"
+          name="willingTravelTime"
+          placeholder="willing travel time"
+          value={willingTravelTime}
+          onChange={onWillingTravelTimeChange}
         />
         <input
           type="submit"

@@ -31,16 +31,23 @@ const GithubState = (props) => {
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
   // Search Github users
-  const searchUsers = async (searchText) => {
+  const searchUsers = async (zipcode, willingTravelTime) => {
     setLoading();
+    console.log('ran');
 
     const res = await axios.get(
-      `https://api.github.com/search/users?q=${searchText}&client_id=${githubClientId}&client_secret=${githubClientSecret}`
+      `http://127.0.0.1:5000/traveltimes/${zipcode}?willing_travel_time=${willingTravelTime}`,
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      }
     );
+    console.log(res.data.travel_times);
 
     dispatch({
       type: SEARCH_USERS,
-      payload: res.data.items,
+      payload: res.data.travel_times,
     });
   };
 
