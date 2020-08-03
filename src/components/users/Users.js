@@ -12,8 +12,8 @@ const Users = () => {
     <Spinner />
   ) : (
     <div style={userStyle}>
-      {users.map((user) => (
-        <UserItem key={user.campsite.id} user={user} />
+      {users.map((campsite) => (
+        <UserItem key={campsite.campsite.id} campsite={campsite} />
       ))}
     </div>
   );

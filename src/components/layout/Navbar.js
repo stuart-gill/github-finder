@@ -24,8 +24,8 @@ const Navbar = ({ icon, title }) => {
 };
 
 Navbar.defaultProps = {
-  title: 'Github Finder',
-  icon: 'fab fa-github',
+  title: 'Campsite Finder',
+  icon: 'fas fa-campground',
 };
 
 Navbar.propTypes = {

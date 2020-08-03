@@ -8,6 +8,7 @@ import {
   CLEAR_USERS,
   GET_CAMPSITE,
   GET_REPOS,
+  SET_MIN_TEMP,
 } from '../types';
 
 let githubClientId;
@@ -23,9 +24,10 @@ if (process.env.NODE_ENV !== 'production') {
 const GithubState = (props) => {
   const initialState = {
     users: [],
-    campsite: {},
+    campsite: { forecasts: [] },
     repos: [],
     loading: false,
+    minTemp: null,
   };
 
   const [state, dispatch] = useReducer(GithubReducer, initialState);
@@ -50,7 +52,7 @@ const GithubState = (props) => {
     });
   };
 
-  // Get single Github user
+  // Get single campsite
   const getCampsite = async (campsite_id) => {
     setLoading();
     console.log('get user ran');
@@ -82,6 +84,11 @@ const GithubState = (props) => {
   //Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
 
+  // Set min temp
+  const setMinTemp = (input) => {
+    dispatch({ type: SET_MIN_TEMP, payload: input });
+  };
+
   //   whole application is wrapped in this provider
   return (
     <GithubContext.Provider
@@ -90,10 +97,12 @@ const GithubState = (props) => {
         campsite: state.campsite,
         repos: state.repos,
         loading: state.loading,
+        minTemp: state.minTemp,
         searchUsers,
         clearUsers,
         getCampsite,
         getUserRepos,
+        setMinTemp,
       }}>
       {props.children}
     </GithubContext.Provider>

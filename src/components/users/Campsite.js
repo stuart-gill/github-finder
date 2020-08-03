@@ -3,6 +3,7 @@ import Spinner from '../layout/Spinner';
 import Repos from '../repos/Repos';
 import { Link } from 'react-router-dom';
 import GithubContext from '../../context/github/githubContext';
+import Forecasts from '../forecasts/Forecasts';
 
 const Campsite = ({ match }) => {
   const githubContext = useContext(GithubContext);
@@ -25,6 +26,7 @@ const Campsite = ({ match }) => {
     name,
     lat,
     lng,
+    forecasts,
 
     // name,
     // company,
@@ -45,7 +47,7 @@ const Campsite = ({ match }) => {
 
   return (
     <Fragment>
-      <div className="card grid-2">
+      <div className="card grid-1">
         <div className="all-center">
           {/* <img
             src={avatar_url}
@@ -58,6 +60,7 @@ const Campsite = ({ match }) => {
             Lat: {lat}, Lon: {lng}
           </p>
         </div>
+        <Forecasts />
         {/* <div>
           {bio && (
             <Fragment>

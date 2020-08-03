@@ -7,6 +7,7 @@ const Search = () => {
   const alertContext = useContext(AlertContext);
   const [zipcode, setZipcode] = useState('');
   const [willingTravelTime, setWillingTravelTime] = useState('');
+  const [minTemp, setMinTemp] = useState('');
 
   const onZipChange = (e) => {
     setZipcode(e.target.value);
@@ -16,6 +17,10 @@ const Search = () => {
     setWillingTravelTime(e.target.value);
   };
 
+  const onMinTempChange = (e) => {
+    setMinTemp(e.target.value);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (zipcode === '') {
@@ -23,6 +28,7 @@ const Search = () => {
     } else if (willingTravelTime === '') {
       alertContext.setAlert('please enter search travel time', 'light');
     } else {
+      githubContext.setMinTemp(minTemp);
       githubContext.searchUsers(zipcode, willingTravelTime);
       setZipcode('');
       setWillingTravelTime('');
@@ -45,6 +51,13 @@ const Search = () => {
           placeholder="willing travel time"
           value={willingTravelTime}
           onChange={onWillingTravelTimeChange}
+        />
+        <input
+          type="text"
+          name="minTemp"
+          placeholder="minimum acceptable temperature"
+          value={minTemp}
+          onChange={onMinTempChange}
         />
         <input
           type="submit"

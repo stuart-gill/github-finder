@@ -4,6 +4,7 @@ import {
   CLEAR_USERS,
   GET_CAMPSITE,
   GET_REPOS,
+  SET_MIN_TEMP,
 } from '../types';
 
 export default (state, action) => {
@@ -12,6 +13,11 @@ export default (state, action) => {
       return {
         ...state,
         loading: true,
+      };
+    case SET_MIN_TEMP:
+      return {
+        ...state,
+        minTemp: action.payload,
       };
     case CLEAR_USERS:
       return {
