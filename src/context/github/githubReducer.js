@@ -2,7 +2,7 @@ import {
   SEARCH_USERS,
   SET_LOADING,
   CLEAR_USERS,
-  GET_USER,
+  GET_CAMPSITE,
   GET_REPOS,
 } from '../types';
 
@@ -19,10 +19,10 @@ export default (state, action) => {
         users: [],
         loading: false,
       };
-    case GET_USER:
+    case GET_CAMPSITE:
       return {
         ...state,
-        user: action.payload,
+        campsite: action.payload,
         loading: false,
       };
     case SEARCH_USERS:

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import User from './components/users/User';
+import Campsite from './components/users/Campsite';
 import Alert from './components/layout/Alert';
 import About from './components/pages/About';
 import GithubState from './context/github/GithubState';
@@ -23,7 +23,7 @@ const App = () => {
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />
-                <Route exact path="/user/:login" component={User} />
+                <Route exact path="/user/:campsite_id" component={Campsite} />
                 <Route component={NotFound} />
               </Switch>
             </div>

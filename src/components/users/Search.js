@@ -20,6 +20,8 @@ const Search = () => {
     e.preventDefault();
     if (zipcode === '') {
       alertContext.setAlert('please enter search zipcode', 'light');
+    } else if (willingTravelTime === '') {
+      alertContext.setAlert('please enter search travel time', 'light');
     } else {
       githubContext.searchUsers(zipcode, willingTravelTime);
       setZipcode('');

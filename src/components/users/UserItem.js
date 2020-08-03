@@ -14,11 +14,11 @@ const UserItem = ({ user: { campsite, duration } }) => {
       /> */}
       <h3>{campsite.name}</h3>
       <p>{duration}</p>
-      {/* <div>
-        <Link to={`/user/${login}`} className="btn btn-dark btn-sm my-1">
+      <div>
+        <Link to={`/user/${campsite.id}`} className="btn btn-dark btn-sm my-1">
           See More
         </Link>
-      </div> */}
+      </div>
     </div>
   );
 };

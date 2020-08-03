@@ -6,7 +6,7 @@ import {
   SEARCH_USERS,
   SET_LOADING,
   CLEAR_USERS,
-  GET_USER,
+  GET_CAMPSITE,
   GET_REPOS,
 } from '../types';
 
@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
 const GithubState = (props) => {
   const initialState = {
     users: [],
-    user: {},
+    campsite: {},
     repos: [],
     loading: false,
   };
@@ -33,7 +33,6 @@ const GithubState = (props) => {
   // Search Github users
   const searchUsers = async (zipcode, willingTravelTime) => {
     setLoading();
-    console.log('ran');
 
     const res = await axios.get(
       `http://127.0.0.1:5000/traveltimes/${zipcode}?willing_travel_time=${willingTravelTime}`,
@@ -52,15 +51,18 @@ const GithubState = (props) => {
   };
 
   // Get single Github user
-  const getUser = async (username) => {
+  const getCampsite = async (campsite_id) => {
     setLoading();
+    console.log('get user ran');
 
     const res = await axios.get(
-      `https://api.github.com/users/${username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`
+      `http://127.0.0.1:5000/campsite?campsite_id=${campsite_id}`
     );
 
+    console.log(res.data);
+
     dispatch({
-      type: GET_USER,
+      type: GET_CAMPSITE,
       payload: res.data,
     });
   };
@@ -85,12 +87,12 @@ const GithubState = (props) => {
     <GithubContext.Provider
       value={{
         users: state.users,
-        user: state.user,
+        campsite: state.campsite,
         repos: state.repos,
         loading: state.loading,
         searchUsers,
         clearUsers,
-        getUser,
+        getCampsite,
         getUserRepos,
       }}>
       {props.children}
