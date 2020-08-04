@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Icon } from '@iconify/react';
+import locationIcon from '@iconify/icons-mdi/map-marker';
+// import './map.css';
 
-// having ${login} in url Link is how we pass the user login to the User.js component
 const CampsiteMapItem = ({ campsite }) => {
   return (
-    <div>
-      <p>{campsite.campsite.name}</p>
-      <p>{campsite.duration}</p>
-      {/* <div>
-        <Link
-          to={`/campsite/${campsite.id}`}
-          className="btn btn-dark btn-sm my-1">
-          See More
-        </Link>
-      </div> */}
+    <div className="pin">
+      <Icon icon={locationIcon} className="pin-icon" />
+      {/* <p className="pin-text">{campsite.campsite.name}</p>
+      <p className="pin-text">{(campsite.duration / 3600).toFixed(2)} hours</p> */}
     </div>
   );
 };

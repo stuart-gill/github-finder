@@ -30,8 +30,8 @@ const Search = () => {
     } else {
       githubContext.setMinTemp(minTemp);
       githubContext.searchUsers(zipcode, willingTravelTime);
-      setZipcode('');
-      setWillingTravelTime('');
+      // setZipcode('');
+      // setWillingTravelTime('');
     }
   };
 
