@@ -17,6 +17,7 @@
   width: 180px;
   color: var(--main-blue);
   transform: translate(-10%, -50%);
+  cursor: pointer;
 }
 
 .pin-icon {
@@ -39,7 +40,9 @@
 
   .pin {
     width: 5vw;
-    transform: translate(-10%, -100%);
+    transform: translate(-40%, -100%);
+    cursor: pointer;
+    z-index: 10;
   }
 
   .pin-icon {
