@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const CampsiteInfoWindow = ({ campsite }) => {
@@ -14,12 +14,12 @@ const CampsiteInfoWindow = ({ campsite }) => {
     zIndex: 100,
   };
 
-  const travelTime = (campsite.duration / 3600).toFixed(2);
-
   return (
     <div style={infoWindowStyle}>
       <div style={{ fontSize: 16 }}>{campsite.campsite.name}</div>
-      <div style={{ fontSize: 14, color: 'grey' }}>{travelTime} hours</div>
+      <div style={{ fontSize: 14, color: 'grey' }}>
+        {campsite.duration.text} travel time
+      </div>
     </div>
   );
 };

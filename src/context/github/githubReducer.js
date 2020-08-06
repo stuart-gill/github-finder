@@ -1,7 +1,7 @@
 import {
-  SEARCH_USERS,
+  SEARCH_CAMPSITES,
   SET_LOADING,
-  CLEAR_USERS,
+  CLEAR_CAMPSITES,
   GET_CAMPSITE,
   GET_REPOS,
   SET_MIN_TEMP,
@@ -19,10 +19,10 @@ export default (state, action) => {
         ...state,
         minTemp: action.payload,
       };
-    case CLEAR_USERS:
+    case CLEAR_CAMPSITES:
       return {
         ...state,
-        users: [],
+        campsites: [],
         loading: false,
       };
     case GET_CAMPSITE:
@@ -31,10 +31,10 @@ export default (state, action) => {
         campsite: action.payload,
         loading: false,
       };
-    case SEARCH_USERS:
+    case SEARCH_CAMPSITES:
       return {
         ...state,
-        users: action.payload,
+        campsites: action.payload,
         loading: false,
       };
     case GET_REPOS:

@@ -29,7 +29,7 @@ const Search = () => {
       alertContext.setAlert('please enter search travel time', 'light');
     } else {
       githubContext.setMinTemp(minTemp);
-      githubContext.searchUsers(zipcode, willingTravelTime);
+      githubContext.searchCampsites(zipcode, willingTravelTime);
       // setZipcode('');
       // setWillingTravelTime('');
     }
@@ -65,7 +65,7 @@ const Search = () => {
           className="btn btn-dark btn-block"
         />
       </form>
-      {githubContext.users.length > 0 && (
+      {githubContext.campsites.length > 0 && (
         <button
           className="btn btn-light btn-block"
           onClick={githubContext.clearUsers}>

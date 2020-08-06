@@ -3,9 +3,9 @@ import axios from 'axios';
 import GithubContext from './githubContext';
 import GithubReducer from './githubReducer';
 import {
-  SEARCH_USERS,
+  SEARCH_CAMPSITES,
   SET_LOADING,
-  CLEAR_USERS,
+  CLEAR_CAMPSITES,
   GET_CAMPSITE,
   GET_REPOS,
   SET_MIN_TEMP,
@@ -23,7 +23,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const GithubState = (props) => {
   const initialState = {
-    users: [],
+    campsites: [],
     campsite: { forecasts: [] },
     repos: [],
     loading: false,
@@ -32,8 +32,8 @@ const GithubState = (props) => {
 
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
-  // Search Github users
-  const searchUsers = async (zipcode, willingTravelTime) => {
+  // Search campsite
+  const searchCampsites = async (zipcode, willingTravelTime) => {
     setLoading();
 
     const res = await axios.get(
@@ -47,7 +47,7 @@ const GithubState = (props) => {
     console.log(res.data.travel_times);
 
     dispatch({
-      type: SEARCH_USERS,
+      type: SEARCH_CAMPSITES,
       payload: res.data.travel_times,
     });
   };
@@ -55,7 +55,7 @@ const GithubState = (props) => {
   // Get single campsite
   const getCampsite = async (campsite_id) => {
     setLoading();
-    console.log('get user ran');
+    console.log('get campsite ran');
 
     const res = await axios.get(
       `http://127.0.0.1:5000/campsite?campsite_id=${campsite_id}`
@@ -79,7 +79,7 @@ const GithubState = (props) => {
   };
 
   //Clear Users
-  const clearUsers = () => dispatch({ type: CLEAR_USERS });
+  const clearCampsites = () => dispatch({ type: CLEAR_CAMPSITES });
 
   //Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
@@ -93,13 +93,13 @@ const GithubState = (props) => {
   return (
     <GithubContext.Provider
       value={{
-        users: state.users,
+        campsites: state.campsites,
         campsite: state.campsite,
         repos: state.repos,
         loading: state.loading,
         minTemp: state.minTemp,
-        searchUsers,
-        clearUsers,
+        searchCampsites,
+        clearCampsites,
         getCampsite,
         getUserRepos,
         setMinTemp,

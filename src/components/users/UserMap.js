@@ -14,20 +14,20 @@ const UserMap = () => {
   const [zoom, setZoom] = useState(8);
   const githubContext = useContext(GithubContext);
 
-  const { loading, users } = githubContext;
+  const { loading, campsites } = githubContext;
 
   let key = process.env.GOOGLE_API_KEY;
 
   return loading ? (
     <Spinner />
   ) : (
-    githubContext.users.length > 0 && (
+    campsites.length > 0 && (
       <div className="google-map">
         <GoogleMapReact
           bootstrapURLKeys={key}
           defaultZoom={zoom}
           defaultCenter={center}>
-          {users.map((campsite) => (
+          {campsites.map((campsite) => (
             <CampsiteMapItem
               lat={campsite.campsite.lat}
               lng={campsite.campsite.lng}

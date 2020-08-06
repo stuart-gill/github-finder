@@ -6,13 +6,13 @@ import GithubContext from '../../context/github/githubContext';
 const Users = () => {
   const githubContext = useContext(GithubContext);
 
-  const { loading, users } = githubContext;
+  const { loading, campsites } = githubContext;
 
   return loading ? (
     <Spinner />
   ) : (
     <div style={userStyle}>
-      {users.map((campsite) => (
+      {campsites.map((campsite) => (
         <UserItem key={campsite.campsite.id} campsite={campsite} />
       ))}
     </div>

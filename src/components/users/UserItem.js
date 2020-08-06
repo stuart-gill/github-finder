@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // having ${login} in url Link is how we pass the user login to the User.js component
 const UserItem = ({ campsite: { campsite, duration } }) => {
-  const travelTime = (duration / 3600).toFixed(2);
+  // const travelTime = (duration_value / 3600).toFixed(2);
   return (
     <div className="card text-center">
       {/* <img
@@ -14,7 +14,7 @@ const UserItem = ({ campsite: { campsite, duration } }) => {
         style={{ width: '60px' }}
       /> */}
       <h3>{campsite.name}</h3>
-      <p>{travelTime} hours</p>
+      <p>{duration.text}</p>
       <div>
         <Link
           to={`/campsite/${campsite.id}`}
