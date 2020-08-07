@@ -29,7 +29,7 @@ const Search = () => {
       alertContext.setAlert('please enter search travel time', 'light');
     } else {
       githubContext.setMinTemp(minTemp);
-      githubContext.searchCampsites(zipcode, willingTravelTime);
+      githubContext.searchCampsites(zipcode, willingTravelTime * 3600);
       // setZipcode('');
       // setWillingTravelTime('');
     }
@@ -48,14 +48,14 @@ const Search = () => {
         <input
           type="text"
           name="willingTravelTime"
-          placeholder="willing travel time"
+          placeholder="willing travel time - hours"
           value={willingTravelTime}
           onChange={onWillingTravelTimeChange}
         />
         <input
           type="text"
           name="minTemp"
-          placeholder="minimum acceptable temperature"
+          placeholder="minimum acceptable temperature F"
           value={minTemp}
           onChange={onMinTempChange}
         />
@@ -68,7 +68,7 @@ const Search = () => {
       {githubContext.campsites.length > 0 && (
         <button
           className="btn btn-light btn-block"
-          onClick={githubContext.clearUsers}>
+          onClick={githubContext.clearCampsites}>
           Clear
         </button>
       )}

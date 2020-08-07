@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const CampsiteInfoWindow = ({ campsite }) => {
@@ -18,8 +19,13 @@ const CampsiteInfoWindow = ({ campsite }) => {
     <div style={infoWindowStyle}>
       <div style={{ fontSize: 16 }}>{campsite.campsite.name}</div>
       <div style={{ fontSize: 14, color: 'grey' }}>
-        {campsite.duration.text} travel time
+        {campsite.duration.text}
       </div>
+      <Link
+        to={`/campsite/${campsite.campsite.id}`}
+        className="btn btn-dark btn-sm my-1">
+        See More
+      </Link>
     </div>
   );
 };
