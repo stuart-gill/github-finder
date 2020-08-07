@@ -27,7 +27,22 @@ const UserMap = () => {
           bootstrapURLKeys={key}
           defaultZoom={zoom}
           defaultCenter={center}>
-          {campsites.map((campsite) => (
+          {campsites
+            .filter((campsite) =>
+              campsite.campsite.forecasts.some(
+                (forecast) => forecast.temperature > githubContext.minTemp
+              )
+            )
+            .map((filteredCampsite) => (
+              <CampsiteMapItem
+                lat={filteredCampsite.campsite.lat}
+                lng={filteredCampsite.campsite.lng}
+                text={filteredCampsite.campsite.name}
+                campsite={filteredCampsite}
+                key={filteredCampsite.campsite.id}
+              />
+            ))}
+          {/* {campsites.map((campsite) => (
             <CampsiteMapItem
               lat={campsite.campsite.lat}
               lng={campsite.campsite.lng}
@@ -35,7 +50,7 @@ const UserMap = () => {
               campsite={campsite}
               key={campsite.campsite.id}
             />
-          ))}
+          ))} */}
         </GoogleMapReact>
       </div>
     )

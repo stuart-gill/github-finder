@@ -24,6 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
 const GithubState = (props) => {
   const initialState = {
     campsites: [],
+    acceptable_campsites: [],
     campsite: { forecasts: [] },
     repos: [],
     loading: false,
