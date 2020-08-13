@@ -14,6 +14,12 @@ import {
 let githubClientId;
 let githubClientSecret;
 
+// if API is deployed on Heroku
+const URL = 'https://sunny65-api.herokuapp.com';
+
+// if running locally
+// const URL = 'http://127.0.0.1:5000';
+
 if (process.env.NODE_ENV !== 'production') {
   githubClientId = process.env.REACT_APP_CLIENT_ID;
   githubClientSecret = process.env.REACT_APP_CLIENT_SECRET;
@@ -37,14 +43,14 @@ const GithubState = (props) => {
   const searchCampsites = async (zipcode, willingTravelTime) => {
     setLoading();
 
-    const res = await axios.get(
-      `http://127.0.0.1:5000/traveltimes/${zipcode}?willing_travel_time=${willingTravelTime}`,
-      {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-      }
-    );
+    const res = await axios.get(`${URL}/traveltimes/${zipcode}`, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        willing_travel_time: willingTravelTime,
+      },
+    });
     console.log(res.data.travel_times);
 
     dispatch({
@@ -54,13 +60,18 @@ const GithubState = (props) => {
   };
 
   // Get single campsite
-  const getCampsite = async (campsite_id) => {
+  const getCampsite = async (campsiteId) => {
     setLoading();
     console.log('get campsite ran');
 
-    const res = await axios.get(
-      `http://127.0.0.1:5000/campsite?campsite_id=${campsite_id}`
-    );
+    const res = await axios.get(`${URL}/campsite`, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      params: {
+        campsite_id: campsiteId,
+      },
+    });
 
     console.log(res.data);
 

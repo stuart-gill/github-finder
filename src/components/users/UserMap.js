@@ -18,6 +18,8 @@ const UserMap = () => {
 
   let key = process.env.GOOGLE_API_KEY;
 
+  // only display CampsiteMapItems that have at least one forecast period with temp above user's min temp
+  // perhaps this functionality should be done in a reducer, which sets an "acceptable campsites" state array
   return loading ? (
     <Spinner />
   ) : (
