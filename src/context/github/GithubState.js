@@ -14,8 +14,11 @@ import {
 let githubClientId;
 let githubClientSecret;
 
+// if API is on Digital Ocean
+const URL = 'http://128.199.0.88';
+
 // if API is deployed on Heroku
-const URL = 'https://sunny65-api.herokuapp.com';
+// const URL = 'https://sunny65-api.herokuapp.com';
 
 // if running locally
 // const URL = 'http://127.0.0.1:5000';

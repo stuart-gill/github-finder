@@ -16,7 +16,7 @@ const UserMap = () => {
 
   const { loading, campsites } = githubContext;
 
-  let key = process.env.GOOGLE_API_KEY;
+  let key = process.env.REACT_APP_GOOGLE_API_KEY;
 
   // only display CampsiteMapItems that have at least one forecast period with temp above user's min temp
   // perhaps this functionality should be done in a reducer, which sets an "acceptable campsites" state array
@@ -26,9 +26,11 @@ const UserMap = () => {
     campsites.length > 0 && (
       <div className="google-map">
         <GoogleMapReact
-          bootstrapURLKeys={key}
+          bootstrapURLKeys={{ key }}
           defaultZoom={zoom}
-          defaultCenter={center}>
+          defaultCenter={center}
+          google
+          m>
           {campsites
             .filter((campsite) =>
               campsite.campsite.forecasts.some(
