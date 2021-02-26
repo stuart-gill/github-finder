@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import UserItem from './UserItem';
 import Spinner from '../layout/Spinner';
 import GithubContext from '../../context/github/githubContext';
 import GoogleMapReact from 'google-map-react';
@@ -7,11 +6,11 @@ import CampsiteMapItem from './CampsiteMapItem';
 import './map.css';
 
 const UserMap = () => {
-  const [center, setCenter] = useState({
+  const [center] = useState({
     lat: 47.6,
     lng: -122.33,
   });
-  const [zoom, setZoom] = useState(8);
+  const [zoom] = useState(8);
   const githubContext = useContext(GithubContext);
 
   const { loading, campsites } = githubContext;
@@ -61,9 +60,4 @@ const UserMap = () => {
   );
 };
 
-const userStyle = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3,1fr)',
-  gridGap: '1rem',
-};
 export default UserMap;

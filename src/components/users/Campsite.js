@@ -1,19 +1,11 @@
 import React, { Fragment, useEffect, useContext } from 'react';
 import Spinner from '../layout/Spinner';
-import Repos from '../repos/Repos';
-import { Link } from 'react-router-dom';
 import GithubContext from '../../context/github/githubContext';
 import Forecasts from '../forecasts/Forecasts';
 
 const Campsite = ({ match }) => {
   const githubContext = useContext(GithubContext);
-  const {
-    getCampsite,
-    loading,
-    campsite,
-    repos,
-    getCampsiteRepos,
-  } = githubContext;
+  const { getCampsite, loading, campsite } = githubContext;
 
   // empty brackets at end of useEffect mimics "componentDidMount"... or "onMount" runs only once
   // have to use empty brackets or it just keeps running
@@ -22,26 +14,7 @@ const Campsite = ({ match }) => {
     // eslint-disable-next-line
   }, []);
   console.log(campsite);
-  const {
-    name,
-    lat,
-    lng,
-    forecasts,
-
-    // name,
-    // company,
-    // avatar_url,
-    // location,
-    // bio,
-    // blog,
-    // login,
-    // html_url,
-    // followers,
-    // following,
-    // public_repos,
-    // public_gists,
-    // hireable,
-  } = campsite;
+  const { name, lat, lng } = campsite;
 
   if (loading) return <Spinner />;
 
