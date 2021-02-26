@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import Search from '../users/Search';
-import CampsiteMap from '../users/CampsiteMap';
+import Search from '../campsites/Search';
+import CampsiteMap from '../campsites/CampsiteMap';
 
 const Home = () => {
   return (
