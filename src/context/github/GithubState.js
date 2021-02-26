@@ -10,9 +10,6 @@ import {
   SET_MIN_TEMP,
 } from '../types';
 
-let githubClientId;
-let githubClientSecret;
-
 // if API is on Digital Ocean
 const URL = process.env.REACT_APP_DIGITAL_OCEAN_IP;
 
@@ -22,13 +19,6 @@ const URL = process.env.REACT_APP_DIGITAL_OCEAN_IP;
 // if running locally
 // const URL = 'http://127.0.0.1:5000';
 
-if (process.env.NODE_ENV !== 'production') {
-  githubClientId = process.env.REACT_APP_CLIENT_ID;
-  githubClientSecret = process.env.REACT_APP_CLIENT_SECRET;
-} else {
-  githubClientId = process.env.CLIENT_ID;
-  githubClientSecret = process.env.CLIENT_SECRET;
-}
 const GithubState = (props) => {
   const initialState = {
     campsites: [],
