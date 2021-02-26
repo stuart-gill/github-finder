@@ -11,7 +11,10 @@ import {
 } from '../types';
 
 // if API is on Digital Ocean
-const URL = process.env.REACT_APP_DIGITAL_OCEAN_IP;
+// const URL = process.env.REACT_APP_DIGITAL_OCEAN_IP;
+
+// API hosted on Digital Ocean with DNS by cloudflare
+const URL = 'https://sgill.dev';
 
 // if API is deployed on Heroku
 // const URL = 'https://sunny65-api.herokuapp.com';
