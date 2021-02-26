@@ -15,7 +15,7 @@ let githubClientId;
 let githubClientSecret;
 
 // if API is on Digital Ocean
-const URL = 'http://128.199.0.88';
+const URL = process.env.REACT_APP_DIGITAL_OCEAN_IP;
 
 // if API is deployed on Heroku
 // const URL = 'https://sunny65-api.herokuapp.com';
