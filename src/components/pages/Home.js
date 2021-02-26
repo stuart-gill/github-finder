@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import Search from '../users/Search';
-import UserMap from '../users/UserMap';
+import CampsiteMap from '../users/CampsiteMap';
 
 const Home = () => {
   return (
     <Fragment>
       <Search />
-      <UserMap />
+      <CampsiteMap />
     </Fragment>
   );
 };

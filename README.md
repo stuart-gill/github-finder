@@ -12,3 +12,4 @@ If the app is calling an API running locally, disable CORS with a browser extens
 
 Deployed on Netlify using Sunny65 branch
 Currently not working because API deployed on digital ocean is "loading mixed active content"... I think because API is http and netlify is HTTPS
+https://kind-davinci-e84710.netlify.app/

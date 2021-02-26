@@ -3,7 +3,6 @@ import {
   SET_LOADING,
   CLEAR_CAMPSITES,
   GET_CAMPSITE,
-  GET_REPOS,
   SET_MIN_TEMP,
 } from '../types';
 
@@ -35,12 +34,6 @@ export default (state, action) => {
       return {
         ...state,
         campsites: action.payload,
-        loading: false,
-      };
-    case GET_REPOS:
-      return {
-        ...state,
-        repos: action.payload,
         loading: false,
       };
     default:

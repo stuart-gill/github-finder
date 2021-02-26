@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Campsite from './components/users/Campsite';
+import Campsite from './components/campsites/Campsite';
 import Alert from './components/layout/Alert';
 import About from './components/pages/About';
 import GithubState from './context/github/GithubState';

@@ -5,7 +5,7 @@ import locationIcon from '@iconify/icons-mdi/map-marker';
 import CampsiteInfoWindow from './CampsiteInfoWindow';
 // import './map.css';
 
-const CampsiteMapItem = ({ campsite }) => {
+const CampsiteMapPin = ({ campsite }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -22,8 +22,8 @@ const CampsiteMapItem = ({ campsite }) => {
   );
 };
 
-CampsiteMapItem.propTypes = {
+CampsiteMapPin.propTypes = {
   campsite: PropTypes.object.isRequired,
 };
 
-export default CampsiteMapItem;
+export default CampsiteMapPin;

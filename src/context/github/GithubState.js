@@ -7,7 +7,6 @@ import {
   SET_LOADING,
   CLEAR_CAMPSITES,
   GET_CAMPSITE,
-  GET_REPOS,
   SET_MIN_TEMP,
 } from '../types';
 
@@ -35,7 +34,6 @@ const GithubState = (props) => {
     campsites: [],
     acceptable_campsites: [],
     campsite: { forecasts: [] },
-    repos: [],
     loading: false,
     minTemp: null,
   };
@@ -84,15 +82,6 @@ const GithubState = (props) => {
     });
   };
 
-  // Get user repos
-  const getUserRepos = async (username) => {
-    setLoading();
-    const res = await axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${githubClientId}&client_secret=${githubClientSecret}`
-    );
-    dispatch({ type: GET_REPOS, payload: res.data });
-  };
-
   //Clear Users
   const clearCampsites = () => dispatch({ type: CLEAR_CAMPSITES });
 
@@ -110,13 +99,11 @@ const GithubState = (props) => {
       value={{
         campsites: state.campsites,
         campsite: state.campsite,
-        repos: state.repos,
         loading: state.loading,
         minTemp: state.minTemp,
         searchCampsites,
         clearCampsites,
         getCampsite,
-        getUserRepos,
         setMinTemp,
       }}>
       {props.children}

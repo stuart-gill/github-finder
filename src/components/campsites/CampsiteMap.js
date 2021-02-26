@@ -2,10 +2,10 @@ import React, { useContext, useState } from 'react';
 import Spinner from '../layout/Spinner';
 import GithubContext from '../../context/github/githubContext';
 import GoogleMapReact from 'google-map-react';
-import CampsiteMapItem from './CampsiteMapItem';
+import CampsiteMapPin from './CampsiteMapPin';
 import './map.css';
 
-const UserMap = () => {
+const CampsiteMap = () => {
   const [center] = useState({
     lat: 47.6,
     lng: -122.33,
@@ -17,7 +17,7 @@ const UserMap = () => {
 
   let key = process.env.REACT_APP_GOOGLE_API_KEY;
 
-  // only display CampsiteMapItems that have at least one forecast period with temp above user's min temp
+  // only display CampsiteMapPins that have at least one forecast period with temp above user's min temp
   // perhaps this functionality should be done in a reducer, which sets an "acceptable campsites" state array
   return loading ? (
     <Spinner />
@@ -37,7 +37,7 @@ const UserMap = () => {
               )
             )
             .map((filteredCampsite) => (
-              <CampsiteMapItem
+              <CampsiteMapPin
                 lat={filteredCampsite.campsite.lat}
                 lng={filteredCampsite.campsite.lng}
                 text={filteredCampsite.campsite.name}
@@ -46,7 +46,7 @@ const UserMap = () => {
               />
             ))}
           {/* {campsites.map((campsite) => (
-            <CampsiteMapItem
+            <CampsiteMapPin
               lat={campsite.campsite.lat}
               lng={campsite.campsite.lng}
               text={campsite.campsite.name}
@@ -60,4 +60,4 @@ const UserMap = () => {
   );
 };
 
-export default UserMap;
+export default CampsiteMap;
